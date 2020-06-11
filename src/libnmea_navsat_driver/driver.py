@@ -66,10 +66,10 @@ class RosNMEADriver(object):
             ~epe_quality5 (float): Value to use for default EPE quality for fix type 5. (default 4.0)
             ~epe_quality9 (float): Value to use for default EPE quality for fix type 9. (default 3.0)
         """
-        self.fix_pub = rospy.Publisher('fix', NavSatFix, queue_size=1)
-        self.vel_pub = rospy.Publisher('vel', TwistStamped, queue_size=1)
+        self.fix_pub = rospy.Publisher('rtk_fix', NavSatFix, queue_size=1)
+        self.vel_pub = rospy.Publisher('rtk_vel', TwistStamped, queue_size=1)
         self.heading_pub = rospy.Publisher(
-            'heading', QuaternionStamped, queue_size=1)
+            'rtk_heading', QuaternionStamped, queue_size=1)
         self.use_GNSS_time = rospy.get_param('~use_GNSS_time', False)
         if not self.use_GNSS_time:
             self.time_ref_pub = rospy.Publisher(
